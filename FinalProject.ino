@@ -38,7 +38,7 @@ const int IB = 10;  //  pin 9 connected to pin IA
 
 
 //contorl the motor
-byte speed = 50;  // change this (0-255) to control the speed of the motor
+byte speed = 250;  // change this (0-255) to control the speed of the motor
 
 
 /*=========================================================================
@@ -173,8 +173,10 @@ void loop(void)
   } 
   
 if (startMotors) {
-    //start the motors
-     forward();
+    //LED to blue when starting the motor
+     CircuitPlayground.setPixelColor(0,0,255,0);
+    //start the motors 
+    forward();
    }
   if (stp == received){
    startMotors = false;
@@ -195,7 +197,11 @@ if (startMotors) {
     data += sensorTemp;
     Serial.println(data);
     data.toCharArray(output,8);
+    // turn LED GREEN when temp request
+    CircuitPlayground.setPixelColor(0,0,0,255);
     ble.print(data);
+    delay(1000);
+    CircuitPlayground.clearPixels(); 
   }
  
 
@@ -216,7 +222,7 @@ void stop()
      digitalWrite(enA,0);
      digitalWrite(IB, 0);
      digitalWrite(enB,0);
-     speed = 50;
+     speed = 250;
 }
 
  
