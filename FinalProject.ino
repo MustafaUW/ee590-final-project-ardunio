@@ -198,7 +198,7 @@ if (startMotors) {
     Serial.println(data);
     data.toCharArray(output,8);
     // turn LED BLUE when temp request
-    CircuitPlayground.setPixelColor(11,0,0,255);
+    CircuitPlayground.setPixelColor(9,0,0,255);
     ble.print(data);
     delay(1000);
     CircuitPlayground.clearPixels(); 
